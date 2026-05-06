@@ -1,6 +1,14 @@
 import { Rnd } from "react-rnd"
+import { useAppStore } from "../stores/useAppStore"
 
-const Window = () => {
+type WindowProps = {
+    id: string
+    title: string
+}
+
+const Window = ({ id, title }: WindowProps) => {
+    const closeApp = useAppStore(state => state.closeApp)
+
     return (
         <Rnd
             default={{
@@ -19,12 +27,12 @@ const Window = () => {
                 {/* Title Bar */}
                 <div className="title-bar flex h-8 bg-gradient-to-b from-[#0058e6] via-[#3a93ff] to-[#003edb] flex justify-between items-center px-1">
                     {/* Title Text */}
-                    <div className="text-white font-bold text-[13px] tracking-wide [text-shadow:1px_1px_2px_black] pl-1 select-none"> My Documents </div>
+                    <div className="text-white font-bold text-[13px] tracking-wide [text-shadow:1px_1px_2px_black] pl-1 select-none"> {title} </div>
                     {/* Close, minimize menu */}
                     <div className="flex gap-[2px] text-white font-bold">
                         <div className="w-[22px] h-[22px] border border-white/80 rounded-[3px] bg-gradient-to-b from-[#78b1f2] via-[#2f88eb] to-[#1264c7] flex justify-center items-center [text-shadow:1px_1px_1px_black] hover:brightness-110 cursor-default">_</div>
                         <div className="w-[22px] h-[22px] border border-white/80 rounded-[3px] bg-gradient-to-b from-[#78b1f2] via-[#2f88eb] to-[#1264c7] flex justify-center items-center [text-shadow:1px_1px_1px_black] hover:brightness-110 cursor-default">□</div>
-                        <div className="w-[22px] h-[22px] border border-white/80 rounded-[3px] bg-gradient-to-b from-[#e48b7f] via-[#da6854] to-[#cc4630] flex justify-center items-center [text-shadow:1px_1px_1px_black] hover:brightness-110 cursor-default">X</div>
+                        <div onClick={() => closeApp(id)} className="w-[22px] h-[22px] border border-white/80 rounded-[3px] bg-gradient-to-b from-[#e48b7f] via-[#da6854] to-[#cc4630] flex justify-center items-center [text-shadow:1px_1px_1px_black] hover:brightness-110 cursor-default">X</div>
                     </div>
 
                 </div>
