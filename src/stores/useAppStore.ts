@@ -2,9 +2,15 @@ import { create } from "zustand";
 
 export type AppId = 'explorer' | 'textedit' | 'browser' | 'chat' | 'settings'
 
+interface AppState {
+    apps: any[];
+    focusedAppId: string | null;
+    openApp: (newApp: any) => void;
+    closeApp: (appId: string) => void;
+    focusApp: (appId: string) => void;
+}
 
-
-export const useAppStore = create((set) => ({
+export const useAppStore = create<AppState>((set) => ({
     apps: [],
     focusedAppId: null,
 
