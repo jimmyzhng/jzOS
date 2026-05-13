@@ -9,8 +9,6 @@ type ActiveWindowProps = {
 }
 
 const ActiveWindow = ({ id, title, icon, focused, onClick }: ActiveWindowProps) => {
-    const baseClasses = "flex-1 max-w-[160px] h-[26px] flex items-center gap-1.5 px-2 rounded-[2px] cursor-default select-none overflow-hidden"
-
     return (
         <div
             className={focused ? "xp-taskbar-btn-focused" : "xp-taskbar-btn"}
