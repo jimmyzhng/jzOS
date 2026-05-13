@@ -14,4 +14,26 @@
         @apply bg-gradient-to-b from-[#1c4ab0] via-[#2052c9] to-[#2864e3];
         @apply border-t border-l border-[#102e82] border-r border-b border-[#5c94f5];
     }
+
+    .active-title-bar {
+        @apply bg-gradient-to-b from-[#0058e6] via-[#3a93ff] to-[#003edb]
+    }
+
+    .inactive-title-bar {
+        @apply bg-gradient-to-b from-[#789eeb] via-[#85a6f0] to-[#5c85d6]
+    }
+
+    .controls-selector {
+        @apply hover:bg-[#316ac5] hover:text-white px-1 cursor-default
+    }
+
+    .xp-window-btn {
+        @apply w-[22px] h-[22px] border border-white/80 rounded-[3px] flex justify-center items-center [text-shadow:1px_1px_1px_black] hover:brightness-110 cursor-default;
+        @apply bg-gradient-to-b from-[#78b1f2] via-[#2f88eb] to-[#1264c7];
+    }
+
+    .xp-window-btn-close {
+        @apply w-[22px] h-[22px] border border-white/80 rounded-[3px] flex justify-center items-center [text-shadow:1px_1px_1px_black] hover:brightness-110 cursor-default;
+        @apply bg-gradient-to-b from-[#e48b7f] via-[#da6854] to-[#cc4630];
+    }
 }
