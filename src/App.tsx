@@ -17,6 +17,7 @@ function App() {
           key={app.id}
           id={app.id}
           title={app.title}
+          icon={app.icon}
           focused={focusedAppId === app.id}
           onFocus={() => focusApp(app.id)}
         />

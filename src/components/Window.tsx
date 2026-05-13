@@ -5,10 +5,11 @@ type WindowProps = {
     id: string
     title: string
     focused?: boolean
+    icon: string,
     onFocus?: () => void
 }
 
-const Window = ({ id, title, focused, onFocus }: WindowProps) => {
+const Window = ({ id, title, icon, focused, onFocus }: WindowProps) => {
     const closeApp = useAppStore(state => state.closeApp)
 
     return (
@@ -31,7 +32,9 @@ const Window = ({ id, title, focused, onFocus }: WindowProps) => {
                 {/* Title Bar */}
                 <div className={`title-bar flex h-8 flex justify-between items-center px-1 ${focused ? 'active-title-bar' : 'inactive-title-bar'}`}>
                     {/* Title Text */}
-                    <div className="text-white font-bold text-[13px] tracking-wide [text-shadow:1px_1px_2px_black] pl-1 select-none"> {title} </div>
+                    <div className="flex items-center gap-1 text-white font-bold text-[13px] tracking-wide [text-shadow:1px_1px_2px_black] pl-1 select-none">
+                        <img src={icon} className="w-4 h-4" />
+                        {title} </div>
                     {/* Close, minimize menu */}
                     <div className="flex gap-[2px] text-white font-bold">
                         <div className="xp-window-btn">_</div>
