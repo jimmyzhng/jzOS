@@ -4,7 +4,6 @@ import { DESKTOP_SHORTCUTS } from "../config/apps"
 const Desktop = () => {
 
     const openApp = useAppStore(state => state.openApp)
-    const apps = useAppStore(state => state.apps)
 
     return (
         <div className="flex flex-col flex-wrap gap-1 p-2 h-[calc(100vh-30px)] content-start h-screen w-screen bg-cover bg-center overflow-hidden"

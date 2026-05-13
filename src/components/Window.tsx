@@ -4,10 +4,15 @@ import { useAppStore } from "../stores/useAppStore"
 type WindowProps = {
     id: string
     title: string
+    focused?: boolean
+    onFocus?: () => void
 }
 
-const Window = ({ id, title }: WindowProps) => {
+const Window = ({ id, title, focused, onFocus }: WindowProps) => {
     const closeApp = useAppStore(state => state.closeApp)
+
+    const activeTitleBar = "bg-gradient-to-b from-[#0058e6] via-[#3a93ff] to-[#003edb]"
+    const inactiveTitleBar = "bg-gradient-to-b from-[#789eeb] via-[#85a6f0] to-[#5c85d6]"
 
     return (
         <Rnd
@@ -20,12 +25,14 @@ const Window = ({ id, title }: WindowProps) => {
             minWidth={300}
             minHeight={200}
             dragHandleClassName="title-bar"
+            style={{ zIndex: focused ? 10 : 1 }}
+            onMouseDownCapture={onFocus}
         >
             {/* Main Window */}
-            <div className="flex flex-col w-full h-full rounded-t-lg overflow-hidden border-l-[3px] border-r-[3px] border-b-[3px] border-[#003edb] shadow-xl font-sans">
+            <div className={`flex flex-col w-full h-full rounded-t-lg overflow-hidden border-l-[3px] border-r-[3px] border-b-[3px] shadow-xl font-sans ${focused ? 'border-[#003edb]' : 'border-[#5c85d6]'}`}>
 
                 {/* Title Bar */}
-                <div className="title-bar flex h-8 bg-gradient-to-b from-[#0058e6] via-[#3a93ff] to-[#003edb] flex justify-between items-center px-1">
+                <div className={`title-bar flex h-8 flex justify-between items-center px-1 ${focused ? activeTitleBar : inactiveTitleBar}`}>
                     {/* Title Text */}
                     <div className="text-white font-bold text-[13px] tracking-wide [text-shadow:1px_1px_2px_black] pl-1 select-none"> {title} </div>
                     {/* Close, minimize menu */}
